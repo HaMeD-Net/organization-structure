@@ -1,0 +1,18 @@
+.ant-tree {
+    height: 100vh;
+    background: #ffeeaf !important;
+    direction: rtl !important;
+    padding: 20px 10px 0 0 !important;
+    .ant-tree-list{
+  
+      .ant-tree-list-holder {
+        max-width: 250px !important;
+  
+        .ant-tree-list-holder-inner {
+          align-items: baseline !important;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+  

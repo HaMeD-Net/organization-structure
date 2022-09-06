@@ -1,0 +1,11 @@
+{
+  "path": "",
+  "descriptors": [
+    {
+      "name": "IRANSansWeb(FaNum)",
+      "weight": "100",
+      "style": "normal",
+      "source": "assets/fonts/IRANSansWeb(FaNum).ttf"
+    }
+  ]
+}

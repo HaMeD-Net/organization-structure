@@ -1,4 +1,10 @@
+@font-face {
+  font-family: IRANSANS-Regular;
+  src: url("./assets/scss/fonts/IRANSansWeb\(FaNum\).ttf");
+}
+
 .App {
+  font-family: IRANSANS-Regular;
   text-align: center;
 }
 
