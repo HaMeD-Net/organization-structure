@@ -13,7 +13,6 @@ const FormDatePicker = () => {
   // });
   // const [days, setDays] = React.useState<Day[]>([]);
   const [day, setDay] = React.useState<DayValue>(null);
-  console.log(day)
 
   return (
     <>

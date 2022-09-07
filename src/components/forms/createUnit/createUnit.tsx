@@ -12,7 +12,7 @@ import CollectionCreateForm from "./createUnitModal";
 
 const CreateUnit: React.FC = () => {
   const _mFlag = useSelector(_unitModalFlag);
-  const _tFlag = useSelector(_toastFlag);
+  // const _tFlag = useSelector(_toastFlag);
   const dispatch = useDispatch();
   const onCreate = (values: any) => {
     console.log("Received values of form: ", values);

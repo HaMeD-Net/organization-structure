@@ -9,6 +9,7 @@ const initialState = {
   mouseCoordinatesY: null,
   treeUnitsKey: null,
   toastFlag: false,
+  transferFlag: false,
 };
 
 export const treeSlice = createSlice({
@@ -37,6 +38,9 @@ export const treeSlice = createSlice({
     toastMessage: (state, action) => {
       state.toastFlag = action.payload;
     },
+    transferModal: (state, action) => {
+      state.transferFlag = action.payload;
+    },
   },
 });
 export const treeFlag = (state: any) => state.treeReducer.flag;
@@ -47,9 +51,20 @@ export const mouseCoordinatesY = (state: any) =>
 export const treeUnitsKey = (state: any) => state.treeReducer.treeUnitsKey;
 export const _unitModalFlag = (state: any) => state.treeReducer.unitModalFlag;
 export const _postModalFlag = (state: any) => state.treeReducer.postModalFlag;
-export const _appointmentModalFlag = (state: any) => state.treeReducer.appointmentModalFlag;
+export const _appointmentModalFlag = (state: any) =>
+  state.treeReducer.appointmentModalFlag;
 export const _toastFlag = (state: any) => state.treeReducer.toastFlag;
+export const _transferFlag = (state: any) => state.treeReducer.transferFlag;
 
-export const { changeFlag, coordinate, treeKey, unitModal, postModal, appointmentModal, toastMessage } = treeSlice.actions;
+export const {
+  changeFlag,
+  coordinate,
+  treeKey,
+  unitModal,
+  postModal,
+  appointmentModal,
+  toastMessage,
+  transferModal,
+} = treeSlice.actions;
 
 export default treeSlice.reducer;

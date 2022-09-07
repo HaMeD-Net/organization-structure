@@ -11,10 +11,10 @@ import {
 } from "antd";
 import FormItem from "antd/es/form/FormItem";
 import TextArea from "antd/lib/input/TextArea";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { residences } from "../cities";
 import { useSelector, useDispatch } from "react-redux";
-import { postModal, _postModalFlag } from "../../../redux/treeSlice";
+import { postModal, toastMessage, _postModalFlag } from "../../../redux/treeSlice";
 import CollectionCreateForm from "./organizationPostsModal";
 
 
@@ -26,7 +26,9 @@ const OrganizationPosts: React.FC = () => {
     console.log("Received values of form: ", values);
     dispatch(postModal(false));
   };
-
+  useEffect(() => {
+    dispatch(toastMessage(false));
+  },[]);
   return (
     <div>
       <CollectionCreateForm

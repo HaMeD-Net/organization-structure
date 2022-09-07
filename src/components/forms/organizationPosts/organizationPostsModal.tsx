@@ -4,7 +4,7 @@ import TextArea from "antd/lib/input/TextArea";
 import useSelection from "antd/lib/table/hooks/useSelection";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postModal, toastMessage, _postModalFlag } from "../../../redux/treeSlice";
+import { changeFlag, postModal, toastMessage, _postModalFlag } from "../../../redux/treeSlice";
 import Strings from "../../strings/string";
 
 interface Values {
@@ -66,6 +66,7 @@ const _pModal = useSelector(_postModalFlag)
               dispatch(toastMessage(true));
               openNotificationWithIcon("success");
               dispatch(postModal(false));
+
             })
             .catch((info) => {
               console.log("Validate Failed:", info);

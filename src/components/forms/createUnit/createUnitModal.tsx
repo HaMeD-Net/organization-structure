@@ -4,6 +4,7 @@ import TextArea from "antd/lib/input/TextArea";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  changeFlag,
   toastMessage,
   unitModal,
   _toastFlag,
@@ -43,7 +44,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
   useEffect(() => {
     dispatch(toastMessage(false));
     form.resetFields();
-  }, [_uModal]);
+  }, []);
 
   type NotificationType = "success" | "info" | "warning" | "error";
 
@@ -90,7 +91,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               label="واحد والد"
               rules={[
                 {
-                  type: "array",
+                  type: "string",
                   required: true,
                   message: `${Strings.required.message}`,
                 },
@@ -108,7 +109,13 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               {...tailLayout}
               name="sort"
               label="ترتیب نمایش"
-              rules={[{ required: true, message: `${Strings.required.message}` }]}
+              rules={[
+                {
+                  type: "string",
+                  required: true,
+                  message: `${Strings.required.message}`,
+                },
+              ]}
             >
               <Input />
             </Form.Item>
@@ -118,7 +125,13 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               {...tailLayout}
               name="title"
               label="عنوان"
-              rules={[{ required: true, message: `${Strings.required.message}` }]}
+              rules={[
+                {
+                  type: "string",
+                  required: true,
+                  message: `${Strings.required.message}`,
+                },
+              ]}
             >
               <Input />
             </FormItem>
@@ -128,7 +141,13 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               {...tailLayout}
               name="code"
               label="کد"
-              rules={[{ required: true, message: `${Strings.required.message}` }]}
+              rules={[
+                {
+                  type: "string",
+                  required: true,
+                  message: `${Strings.required.message}`,
+                },
+              ]}
             >
               <Input />
             </FormItem>
@@ -171,7 +190,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
                 {
                   required: true,
                   message: `${Strings.required.message}`,
-                  type: "array",
+                  type: "string",
                 },
               ]}
             >
@@ -189,7 +208,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
                 {
                   required: true,
                   message: `${Strings.required.message}`,
-                  type: "array",
+                  type: "string",
                 },
               ]}
             >
@@ -224,7 +243,11 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               name="address"
               label="نشانی"
               rules={[
-                { required: true, message: `${Strings.required.message}` },
+                {
+                  type: "string",
+                  required: true,
+                  message: `${Strings.required.message}`,
+                },
               ]}
             >
               <Input type="textarea" />
@@ -235,7 +258,13 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               {...tailLayout}
               name="phone"
               label="تلفن"
-              rules={[{ required: true, message: `${Strings.required.message}` }]}
+              rules={[
+                {
+                  type: "string",
+                  required: true,
+                  message: `${Strings.required.message}`,
+                },
+              ]}
             >
               <Input />
             </FormItem>

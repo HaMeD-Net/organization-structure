@@ -16,6 +16,8 @@ import PopOver from "../../components/popover/popover";
 import CreateUnit from "../../components/forms/createUnit/createUnit";
 import OrganizationPosts from "../../components/forms/organizationPosts/organizationPosts";
 import AppDisc from "../../components/forms/appoint-disc/appoint-disc";
+import Transfer from "../../components/forms/transfer/transfer";
+import { useEffect } from "react";
 // import styles from "./tree.module.scss";
 
 const { DirectoryTree } = Tree;
@@ -52,20 +54,18 @@ const TreeSelector: React.FC = () => {
   const dispatch = useDispatch();
   const onSelect: DirectoryTreeProps["onSelect"] = (keys, info) => {
     console.log("Trigger Select", keys, info);
-    dispatch(changeFlag(false));
-    console.log(flag);
+    console.log("flag: ", flag);
   };
-
   const onExpand: DirectoryTreeProps["onExpand"] = (keys, info) => {
     // console.log("Trigger Expand", keys, info);
   };
 
   return (
-    <>
+    <div  onClick={() => dispatch(changeFlag(false))}>
+      <Transfer />
       <AppDisc />
       <CreateUnit />
       <OrganizationPosts />
-      {flag && <PopOver />}
       <DirectoryTree
         multiple
         // defaultExpandAll
@@ -73,13 +73,13 @@ const TreeSelector: React.FC = () => {
         onExpand={onExpand}
         treeData={treeData}
         onRightClick={(e) => {
-          console.log(e)
+          console.log(e);
           dispatch(changeFlag(true));
           dispatch(treeKey(e.node.key.toString().split("-")[0]));
           dispatch(coordinate(e.event));
         }}
       />
-    </>
+    </div>
   );
 };
 
