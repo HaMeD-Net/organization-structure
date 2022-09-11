@@ -15,7 +15,7 @@ interface Values {
   
   interface CollectionCreateFormProps {
     visible: boolean;
-    onCreate: (values: Values) => void;
+    onCreate?: (values: Values) => void;
     onCancel: () => void;
   }
   
@@ -62,12 +62,13 @@ const _pModal = useSelector(_postModalFlag)
             .validateFields()
             .then((values) => {
               form.resetFields();
-              onCreate(values);
-              dispatch(toastMessage(true));
+              // onCreate(values);
+              dispatch(toastMessage(false));
               openNotificationWithIcon("success");
               dispatch(postModal(false));
 
             })
+            
             .catch((info) => {
               console.log("Validate Failed:", info);
             });
@@ -87,9 +88,9 @@ const _pModal = useSelector(_postModalFlag)
                 label="واحد مربوطه"
                 rules={[
                   {
-                    required: true,
+                    required: false,
                     message: `${Strings.required.message}`,
-                    type: "array",
+                    type: "string",
                   },
                 ]}
               >
@@ -105,7 +106,7 @@ const _pModal = useSelector(_postModalFlag)
                 {...tailLayout}
                 name="sort"
                 label="ترتیب نمایش"
-                rules={[{ required: true, message: `${Strings.required.message}`}]}
+                rules={[{ required: false, message: `${Strings.required.message}`}]}
               >
                 <Input />
               </Form.Item>
@@ -116,7 +117,7 @@ const _pModal = useSelector(_postModalFlag)
                 {...tailLayout}
                 name="title"
                 label="عنوان"
-                rules={[{ required: true, message: `${Strings.required.message}` }]}
+                rules={[{ required: false, message: `${Strings.required.message}` }]}
               >
                 <Input />
               </FormItem>
@@ -126,7 +127,7 @@ const _pModal = useSelector(_postModalFlag)
                 {...tailLayout}
                 name="code"
                 label="کد"
-                rules={[{ required: true, message: `${Strings.required.message}`}]}
+                rules={[{ required: false, message: `${Strings.required.message}`}]}
               >
                 <Input />
               </FormItem>
@@ -138,9 +139,9 @@ const _pModal = useSelector(_postModalFlag)
                 label="نوع پست"
                 rules={[
                   {
-                    required: true,
+                    required: false,
                     message: `${Strings.required.message}`,
-                    type: "array",
+                    type: "string",
                   },
                 ]}
               >

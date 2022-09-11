@@ -10,8 +10,10 @@ import {
   treeUnitsKey,
   unitModal,
 } from "../../redux/treeSlice";
+import {DeleteFilled} from "@ant-design/icons"
 import { Popconfirm } from "antd";
 import React, { useState, useCallback } from "react";
+import Strings from "../strings/string";
 const PopOver: React.FC = () => {
   const coorX = useSelector(mouseCoordinatesX);
   const coorY = useSelector(mouseCoordinatesY);
@@ -28,6 +30,7 @@ const PopOver: React.FC = () => {
 
   const handleOk = () => {
     setConfirmLoading(true);
+    dispatch(changeFlag(false))
 
     setTimeout(() => {
       setOpen(false);
@@ -91,18 +94,21 @@ const PopOver: React.FC = () => {
       )}
       <p key="edit">ویرایش</p>
       <Popconfirm
-        title="Title"
+        title="مورد انتخاب شده حذف شود؟"
         placement="leftBottom"
         open={open}
         onConfirm={handleOk}
+        okText={Strings.popConfirm.yes}
+        cancelText={Strings.popConfirm.no}
         // okButtonProps={{ loading: confirmLoading }}
         onCancel={handleCancel}
+        icon={<DeleteFilled />}
+        
       >
         <p
           key="delete"
           onClick={() => {
             dispatch(changeFlag(true));
-            console.log("flag: ", flag);
             showPopconfirm();
           }}
         >

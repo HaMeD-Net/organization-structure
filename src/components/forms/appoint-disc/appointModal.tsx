@@ -8,18 +8,24 @@ import {
   notification,
   Row,
   Select,
+  AutoComplete
 } from "antd";
+import React, { useState } from "react";
 import FormItem from "antd/es/form/FormItem";
 import TextArea from "antd/lib/input/TextArea";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   appointmentModal,
   toastMessage,
   _appointmentModalFlag,
 } from "../../../redux/treeSlice";
-import FormDatePicker from "../../datePicker/datePicker";
 import Strings from "../../strings/string";
+import DatePicker, { DateObject } from "react-multi-date-picker";
+import type { Value } from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
 
 type Day = {
   day: number;
@@ -50,7 +56,8 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
   onCancel,
 }) => {
   const [form] = Form.useForm();
-
+  const [appointmentValue, setAppointmentValue] = useState<Value>();
+  const [disconnectionValue, setDisconnectionValue] = useState<Value>();
   const dispatch = useDispatch();
   const _appointment = useSelector(_appointmentModalFlag);
 
@@ -72,6 +79,15 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
     dispatch(toastMessage(false));
     form.resetFields();
   }, [_appointment]);
+  const handleChangePicker = (vals: any) => {
+    console.log("vals", vals);
+    if (vals.day && vals.year) {
+      setAppointmentValue(vals);
+    }
+  };
+
+  const options: any = [];
+
 
   return (
     <Modal
@@ -84,8 +100,10 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
         form
           .validateFields()
           .then((values) => {
-            console.log(values);
+            values.appointmentDate = appointmentValue;
+            values.disconnectionDate = disconnectionValue;
             form.resetFields();
+            console.log("values", values);
             onCreate(values);
             dispatch(toastMessage(true));
             openNotificationWithIcon("success");
@@ -136,7 +154,16 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
                 },
               ]}
             >
-              <Input />
+              {/* <AutoComplete
+                style={{ width: 200 }}
+                options={options}
+                placeholder="جستجو..."
+                filterOption={(inputValue, option) =>
+                  option!.value
+                    .toUpperCase()
+                    .indexOf(inputValue.toUpperCase()) !== -1
+                }
+              /> */}
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -144,38 +171,27 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               <Checkbox>پست پیش فرض</Checkbox>
             </Form.Item>
           </Col>
-          <Col span={12}>
-            <FormItem
-              {...tailLayout}
-              name="appDate"
-              label="تاریخ انتصاب"
-              rules={[
-                {
-                  required: true,
-                  message: `${Strings.required.message}`,
-                  type:"date"
-                },
-              ]}
-            >
-              <FormDatePicker />
-            </FormItem>
+          <Col span={8} className="datePickerFa">
+            <label>تاریخ انتصاب</label>
+            <DatePicker
+              value={appointmentValue}
+              onChange={setAppointmentValue}
+              calendar={persian}
+              locale={persian_fa}
+              calendarPosition="bottom-right"
+            />
           </Col>
-          <Col span={12}>
-            <Form.Item
-              {...tailLayout}
-              name="discDate"
-              label="تاریخ انفصال"
-              rules={[
-                {
-                  required: true,
-                  message: `${Strings.required.message}`,
-                  type: "string",
-                },
-              ]}
-            >
-              <FormDatePicker />
-            </Form.Item>
+          <Col span={8} className="datePickerFa">
+            <label>تاریخ انفصال</label>
+            <DatePicker
+              value={disconnectionValue}
+              onChange={setDisconnectionValue}
+              calendar={persian}
+              locale={persian_fa}
+              calendarPosition="bottom-right"
+            />
           </Col>
+
           <Col span={24} className="description">
             <Form.Item {...tailLayout} name="description" label="توضیحات">
               <TextArea rows={5} style={{ marginRight: 10 }} />

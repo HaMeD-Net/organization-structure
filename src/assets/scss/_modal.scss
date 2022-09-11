@@ -23,12 +23,37 @@
     border-top: none;
     border-bottom: none;
     padding: 14px !important;
+    .datePickerFa {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-flow: row wrap;
+      .rmdp-input {
+        width: 201px;
+        height: 32px;
+        border-radius: 2px;
+        transition: 0.3s ease;
+        &:focus {
+          border-color: #40a9ff;
+          box-shadow: 0 0 0 2px rgb(24 144 255 / 20%);
+          border-right-width: 1px;
+          outline: 0;
+        }
+        &:hover {
+          border-color: #40a9ff;
+          border-right-width: 1px;
+        }
+      }
+    }
   }
-  .ant-form-item-row{
+  .ant-form-item-row {
     flex-direction: row !important;
     justify-content: space-between;
   }
-  .description .ant-form-item-row{
+  .description {
+    margin-top: 20px;
+  }
+  .description .ant-form-item-row {
     justify-content: flex-start;
   }
 }

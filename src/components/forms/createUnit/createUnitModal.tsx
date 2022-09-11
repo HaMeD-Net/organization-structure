@@ -42,7 +42,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
     wrapperCol: { offset: 1, span: 16 },
   };
   useEffect(() => {
-    dispatch(toastMessage(false));
+    // dispatch(toastMessage(false));
     form.resetFields();
   }, []);
 
@@ -68,9 +68,10 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
           .then((values) => {
             form.resetFields();
             onCreate(values);
-            dispatch(toastMessage(true));
+            dispatch(toastMessage(false));
             openNotificationWithIcon("success");
             dispatch(unitModal(false));
+            console.log("createUnitModal rendered!")
           })
           .catch((info) => {
             console.log("Validate Failed:", info);
@@ -92,7 +93,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               rules={[
                 {
                   type: "string",
-                  required: true,
+                  required: false,
                   message: `${Strings.required.message}`,
                 },
               ]}
@@ -112,7 +113,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               rules={[
                 {
                   type: "string",
-                  required: true,
+                  required: false,
                   message: `${Strings.required.message}`,
                 },
               ]}
@@ -128,7 +129,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               rules={[
                 {
                   type: "string",
-                  required: true,
+                  required: false,
                   message: `${Strings.required.message}`,
                 },
               ]}
@@ -144,7 +145,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               rules={[
                 {
                   type: "string",
-                  required: true,
+                  required: false,
                   message: `${Strings.required.message}`,
                 },
               ]}
@@ -188,7 +189,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               label="نوع واحد"
               rules={[
                 {
-                  required: true,
+                  required: false,
                   message: `${Strings.required.message}`,
                   type: "string",
                 },
@@ -206,7 +207,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               label="قسمت کاری واحد"
               rules={[
                 {
-                  required: true,
+                  required: false,
                   message: `${Strings.required.message}`,
                   type: "string",
                 },
@@ -228,7 +229,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               rules={[
                 {
                   type: "array",
-                  required: true,
+                  required: false,
                   message: `${Strings.required.message}`,
                 },
               ]}
@@ -245,7 +246,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               rules={[
                 {
                   type: "string",
-                  required: true,
+                  required: false,
                   message: `${Strings.required.message}`,
                 },
               ]}
@@ -261,7 +262,7 @@ const CollectionCreateForm: React.FC<CollectionCreateFormProps> = ({
               rules={[
                 {
                   type: "string",
-                  required: true,
+                  required: false,
                   message: `${Strings.required.message}`,
                 },
               ]}

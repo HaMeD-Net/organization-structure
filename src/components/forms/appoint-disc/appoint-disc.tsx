@@ -5,7 +5,6 @@ import {
   _appointmentModalFlag,
   _postModalFlag,
 } from "../../../redux/treeSlice";
-import FormDatePicker from "../../datePicker/datePicker";
 import Strings from "../../strings/string";
 import CollectionCreateForm from "./appointModal";
 

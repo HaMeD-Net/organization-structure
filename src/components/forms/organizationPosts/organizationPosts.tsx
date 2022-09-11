@@ -22,10 +22,10 @@ import CollectionCreateForm from "./organizationPostsModal";
 const OrganizationPosts: React.FC = () => {
   const _post = useSelector(_postModalFlag);
   const dispatch = useDispatch();
-  const onCreate = (values: any) => {
-    console.log("Received values of form: ", values);
-    dispatch(postModal(false));
-  };
+  // const onCreate = (values: any) => {
+  //   console.log("Received values of form: ", values);
+  //   dispatch(postModal(false));
+  // };
   useEffect(() => {
     dispatch(toastMessage(false));
   },[]);
@@ -33,7 +33,7 @@ const OrganizationPosts: React.FC = () => {
     <div>
       <CollectionCreateForm
         visible={_post}
-        onCreate={onCreate}
+        // onCreate={onCreate}
         onCancel={() => {
           dispatch(postModal(false));
         }}

@@ -18,9 +18,9 @@ const CreateUnit: React.FC = () => {
     console.log("Received values of form: ", values);
     dispatch(unitModal(false));
   };
-  useEffect(() => {
-    dispatch(toastMessage(false));
-  },[]);
+  // useEffect(() => {
+  //   dispatch(toastMessage(false));
+  // },[]);
 
   const toast = {
     message: Strings.Toast.message,
